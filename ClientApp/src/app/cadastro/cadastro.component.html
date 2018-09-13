@@ -1,0 +1,63 @@
+<div class="container">
+
+  <h2> Cadastro de usuários</h2>
+
+  <p> Preencha o formulário abaixo para se cadastro </p>
+
+  <p> Os campos Nome, Sexo e Data de nascimento são obrigatórios.</p>
+  
+  <form (ngSubmit)="onSubmit(cadastroForm)" #cadastroForm="ngForm">
+
+    <div class="form-group">
+      <label for="name">Nome*</label>
+      <input type="text" class="form-control" id="nome"
+             required
+             [(ngModel)]="cadastroForm.nome" name="nome"
+             #nome="ngModel">
+      <div [hidden]="nome.valid || nome.pristine"
+           class="alert alert-danger">
+        Nome é requerido.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name">E-mail</label>
+      <input type="text" class="form-control" id="cadastroForm.email"
+             required
+             [(ngModel)]="cadastroForm.email" name="email" />
+    </div>
+    <div class="form-group">
+      <label for="name">Data de nascimento*</label>
+      <input type="text" class="form-control" id="datanascimento"
+             required
+             [(ngModel)]="cadastroForm.datanascimento" name="datanascimento"
+             #datanascimento="ngModel">
+      <div [hidden]="datanascimento.valid || datanascimento.pristine"
+           class="alert alert-danger">
+        Data de nascimento é requerido.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name">Senha</label>
+      <input type="password" class="form-control" id="senha"
+             required
+             [(ngModel)]="cadastroForm.senha" name="senha"
+             #senha="ngModel">
+      <div class="form-group">
+        <label for="name">Sexo*</label>
+        <select class="form-control" id="sexo"
+                required
+                [(ngModel)]="cadastroForm.sexo" name="sexo"
+                #sexo="ngModel">
+          <option value="1">Masculino</option>
+          <option value="2">Feminino</option>
+        </select>
+
+
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!cadastroForm.form.valid">Submit</button>
+
+    <div class="alert alert-success" *ngIf="cadastrosucesso"> {{cadastrosucesso}}.</div>
+    <div class="alert alert-danger" *ngIf="cadastroerro"> {{cadastroerro}}.</div>
+  </form>
+</div>

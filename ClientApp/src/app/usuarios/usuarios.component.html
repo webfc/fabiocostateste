@@ -1,0 +1,46 @@
+<div class="row">
+
+  <div class="col-lg-12">
+    <div class="col-lg-12">
+
+      <h2>Relatório de usuários cadastrados</h2>
+      <p> Utilize o campo pesquisar para filtrar usuários</p>
+      <div class="col-lg-4">
+        <select class="form-control">
+
+          <option value="1">Ativo</option>
+          <option value="0">Inativo</option>
+        </select>
+
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <input type="text" class="form-control" id="pesquisa"
+                 [(ngModel)]="pesqTxt"
+                 #pesquisar="ngModel" />
+
+        </div>
+    </div>
+
+      </div>
+
+    <div class="alert alert-warning" *ngIf="!usuarios">
+      <i class="fa fa-spinner fa-spin"></i>
+      Carregando usuários...
+    </div>
+
+    <table class="table table_stripped table-responsive">
+      <tr *ngFor="let usuario of usuarios">
+        
+        <td>{{usuario.nome}}</td>
+        <td>{{usuario.email}}</td>
+        <td>{{usuario.dataNascimento | date:"MM/dd/yyyy" }}</td>
+        <td>{{usuario.sexo}}</td>
+        <td>{{usuario.ativo}}</td>
+      </tr>
+
+    </table>
+  </div>
+
+
+</div>
